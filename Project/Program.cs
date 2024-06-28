@@ -27,6 +27,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<UpdateIndividualClientValid
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateBusinessClientValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateAgreementValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreatePaymentValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<AuthValidator>();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -104,8 +105,15 @@ app.MapControllers();
 
 app.UseHttpsRedirection();
 
-app.MapPost("/api/login", async (LoginAndRegisterRequestModel model, IAuthServices authService) =>
+app.MapPost("/api/login", async (LoginAndRegisterRequestModel model, IAuthServices authService,
+    IValidator<LoginAndRegisterRequestModel> validator) =>
 {
+    var validate = await validator.ValidateAsync(model);
+    if (!validate.IsValid)
+    {
+        return Results.ValidationProblem(validate.ToDictionary());
+    }
+    
     var result = await authService.LoginAsync(model);
     if (result == null)
     {
@@ -114,8 +122,15 @@ app.MapPost("/api/login", async (LoginAndRegisterRequestModel model, IAuthServic
     return Results.Ok(result);
 });
 
-app.MapPost("/api/register/User", async (LoginAndRegisterRequestModel model, IAuthServices authService) =>
+app.MapPost("/api/register/User", async (LoginAndRegisterRequestModel model, IAuthServices authService,
+    IValidator<LoginAndRegisterRequestModel> validator) =>
 {
+    var validate = await validator.ValidateAsync(model);
+    if (!validate.IsValid)
+    {
+        return Results.ValidationProblem(validate.ToDictionary());
+    }
+    
     var result = await authService.RegisterAsync(model, "User");
     if (!result)
     {
@@ -124,8 +139,15 @@ app.MapPost("/api/register/User", async (LoginAndRegisterRequestModel model, IAu
     return Results.Ok("User registered successfully.");
 });
 
-app.MapPost("/api/register/Admin", async (LoginAndRegisterRequestModel model, IAuthServices authService) =>
+app.MapPost("/api/register/Admin", async (LoginAndRegisterRequestModel model,
+    IAuthServices authService, IValidator<LoginAndRegisterRequestModel> validator) =>
 {
+    var validate = await validator.ValidateAsync(model);
+    if (!validate.IsValid)
+    {
+        return Results.ValidationProblem(validate.ToDictionary());
+    }
+    
     var result = await authService.RegisterAsync(model, "Admin");
     if (!result)
     {
