@@ -136,7 +136,7 @@ public class PaymentService(DatabaseContext context, HttpClient httpClient) : IP
         };
     }
 
-    private async Task<double> GetExchangeRateAsync(string currency, string toCurrency)
+    public async Task<double> GetExchangeRateAsync(string currency, string toCurrency)
     {
         var apiKey = "28e3e10930b060865b80f1b6";
         var response = await httpClient.GetStringAsync($"https://v6.exchangerate-api.com/v6/{apiKey}/latest/{currency}");

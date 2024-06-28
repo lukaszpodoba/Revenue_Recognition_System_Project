@@ -1,3 +1,4 @@
+using JWT.Models;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
@@ -13,6 +14,8 @@ public class DatabaseContext : DbContext
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Discount> Discounts { get; set; }
     public DbSet<Subscription> Subscriptions { get; set; }
+    public DbSet<AppUserModel> AppUserModels { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
     
     protected DatabaseContext()
     {
@@ -99,6 +102,5 @@ public class DatabaseContext : DbContext
             DiscountType = "Agreement",
             SoftwareId = 1
         });
-        
     }
 }

@@ -64,11 +64,6 @@ public class ClientService(DatabaseContext context) : IClientService
         await context.SaveChangesAsync();
     }
 
-    public Task UpdateIndividualClientAsync(Individual individual, UpdateIndividualClientModel data)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task UpdateIndividualClientAsync(int id, UpdateIndividualClientModel data)
     {
         var client = await context.Individuals.Where(e => e.ClientId == id).FirstOrDefaultAsync();
