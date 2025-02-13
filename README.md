@@ -84,8 +84,7 @@ FluentValidation is used to ensure incoming data meets specified criteria:
 - **CreatePaymentValidator** Ensures that the payment amount is greater than zero.
 
 ## Testing – Project.Tests
-- **Unit Testing with xUnit**:  
-  Uses an in-memory database to simulate database operations without the need for a real SQL Server.
+- **Unit Testing with xUnit** Uses an in-memory database to simulate database operations without the need for a real SQL Server.
 - **Key Tests**:
   - **AgreementServiceTest** Validates agreement creation and handles error scenarios (e.g., missing client/software or mismatched software type).
   - **ClientServiceTests** Tests the creation, update, and deletion of clients.
