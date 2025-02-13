@@ -49,14 +49,10 @@ The project includes domain entities representing the main business objects:
 
 ### Exceptions
 Custom exceptions handle specific business logic errors:
-- **AgreementAlreadySigned**:  
-  Thrown when an agreement has already been signed.
-- **AmountHasBeenExceeded**:  
-  Indicates that the payment amount exceeds the agreed contract value.
-- **NotFoundException**:  
-  Used when a required resource (e.g., client, software, or agreement) is not found.
-- **WrongSoftwareType**:  
-  Thrown when the software type does not match the expected purchase type (e.g., expecting a one-time purchase but received a subscription).
+- **AgreementAlreadySigned** Thrown when an agreement has already been signed.
+- **AmountHasBeenExceeded** Indicates that the payment amount exceeds the agreed contract value.
+- **NotFoundException** Used when a required resource (e.g., client, software, or agreement) is not found.
+- **WrongSoftwareType** Thrown when the software type does not match the expected purchase type (e.g., expecting a one-time purchase but received a subscription).
 
 ### Services
 Services implement business logic using the `DatabaseContext`:
@@ -82,27 +78,19 @@ Contains static methods for:
 
 ### Validation – Validators
 FluentValidation is used to ensure incoming data meets specified criteria:
-- **AuthValidator**:  
-  Validates login and registration data.
-- **CreateAgreementValidator**:  
-  Checks that payment dates are within a valid range (e.g., 3 to 30 days) and that the support period is appropriate.
-- **CreateIndividualClientValidator & CreateBusinessClientValidator**:  
-  Validate client data such as PESEL length, email format, phone number length, and KRS for businesses.
-- **CreatePaymentValidator**:  
-  Ensures that the payment amount is greater than zero.
+- **AuthValidator** Validates login and registration data.
+- **CreateAgreementValidator** Checks that payment dates are within a valid range (e.g., 3 to 30 days) and that the support period is appropriate.
+- **CreateIndividualClientValidator & CreateBusinessClientValidator** Validate client data such as PESEL length, email format, phone number length, and KRS for businesses.
+- **CreatePaymentValidator** Ensures that the payment amount is greater than zero.
 
 ## Testing – Project.Tests
 - **Unit Testing with xUnit**:  
   Uses an in-memory database to simulate database operations without the need for a real SQL Server.
 - **Key Tests**:
-  - **AgreementServiceTest**:  
-    Validates agreement creation and handles error scenarios (e.g., missing client/software or mismatched software type).
-  - **ClientServiceTests**:  
-    Tests the creation, update, and deletion of clients.
-  - **PaymentServiceTests**:  
-    Verifies payment registration, checks for exceeded payment amounts, ensures proper exception handling, and calculates revenue.
-- **Dummy HttpClient**:  
-  `HttpClientDummy.cs` is used in PaymentService tests to simulate external API responses (e.g., for fetching currency exchange rates).
+  - **AgreementServiceTest** Validates agreement creation and handles error scenarios (e.g., missing client/software or mismatched software type).
+  - **ClientServiceTests** Tests the creation, update, and deletion of clients.
+  - **PaymentServiceTests** Verifies payment registration, checks for exceeded payment amounts, ensures proper exception handling, and calculates revenue.
+- **Dummy HttpClient** `HttpClientDummy.cs` is used in PaymentService tests to simulate external API responses (e.g., for fetching currency exchange rates).
 
 ## Configuration & Deployment
 
@@ -115,5 +103,4 @@ FluentValidation is used to ensure incoming data meets specified criteria:
 - Integrates Swagger for API documentation and testing.
 
 ### Configuration Files
-- **appsettings.json & appsettings.Development.json**:  
-  Contain configurations for logging, the SQL Server connection string, and JWT settings.
+- **appsettings.json & appsettings.Development.json** Contain configurations for logging, the SQL Server connection string, and JWT settings.
