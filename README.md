@@ -23,12 +23,9 @@ The **Revenue Recognition System** is a comprehensive web application built with
 ## Data Access Layer - DatabaseContext
 - **File**: `DatabaseContext.cs`
 - **Key Features:**
-  - **DbSet Definitions**:  
-    Defines DbSets for entities such as Clients, Individuals, Businesses, Softwares, Agreements, Payments, Discounts, Subscriptions, AppUserModels, and RefreshTokens.
-  - **Model Configuration**:  
-    Maps entities to specific tables (e.g., `ToTable("Clients")`) and configures relationships between them (e.g., between Payment and Client).
-  - **Data Seeding**:  
-    Seeds initial data for certain entities (e.g., Software and Discount) to facilitate testing and provide default records upon migration.
+  - **DbSet Definitions** Defines DbSets for entities such as Clients, Individuals, Businesses, Softwares, Agreements, Payments, Discounts, Subscriptions, AppUserModels, and RefreshTokens.
+  - **Model Configuration** Maps entities to specific tables (e.g., `ToTable("Clients")`) and configures relationships between them (e.g., between Payment and Client).
+  - **Data Seeding** Seeds initial data for certain entities (e.g., Software and Discount) to facilitate testing and provide default records upon migration.
 
 ## Business Logic Layer - Models, Services, Exceptions
 
