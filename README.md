@@ -14,16 +14,11 @@ The **Revenue Recognition System** is a comprehensive web application built with
   Implements JWT-based authentication and authorization for secure access.
 
 ## Technologies & Tools
-- **.NET 8.0 Web API**:  
-  - Utilizes minimal APIs and controllers for endpoint creation.
-- **Entity Framework Core:**  
-  - Provides ORM capabilities for managing a SQL Server database.
-- **JWT**:  
-  - Handles user authentication and token management (access token and refresh token).
-- **FluentValidation**:  
-  - Validates incoming request models to ensure data integrity.
-- **xUnit**:  
-  - Used for unit testing business logic and database operations.
+- **.NET 8.0 Web API** Utilizes minimal APIs and controllers for endpoint creation.
+- **Entity Framework Core** Provides ORM capabilities for managing a SQL Server database.
+- **JWT** Handles user authentication and token management (access token and refresh token).
+- **FluentValidation** Validates incoming request models to ensure data integrity.
+- **xUnit** Used for unit testing business logic and database operations.
 
 ## Data Access Layer - DatabaseContext
 - **File**: `DatabaseContext.cs`
